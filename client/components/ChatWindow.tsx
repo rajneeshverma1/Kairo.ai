@@ -10,7 +10,7 @@ import { ThemeSwitcher } from "@/components/ui/theme-switcher-1";
 // A single Chat Tab Component that maintains its own websocket connection and state
 function ChatTabContent({ isActive }: { isActive: boolean }) {
     const { messages, currentAI, sendMessage, connected, finalizeAIMessage } =
-        useWebSocket("ws://localhost:8081")
+        useWebSocket(process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8081")
 
     const scrollRef = useRef<HTMLDivElement>(null)
 
