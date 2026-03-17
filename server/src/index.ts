@@ -5,7 +5,8 @@ import { v4 as uuid } from "uuid";
 import dotenv from "dotenv";
 
 dotenv.config();
-const wss = new WebSocketServer({ port: 8081 });
+const PORT = parseInt(process.env.PORT || "8081");
+const wss = new WebSocketServer({ port: PORT });
 const manager = new ConversationManager();
 
 wss.on("connection", (ws) => {
@@ -87,4 +88,4 @@ wss.on("connection", (ws) => {
     });
 });
 
-console.log("WebSocket server running on ws://localhost:8081");
+console.log(`WebSocket server running on ws://localhost:${PORT}`);
