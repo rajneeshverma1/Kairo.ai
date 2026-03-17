@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/genai": "^1.43.0",
+    "axios": "^1.13.5",
+    "dotenv": "^17.3.1",
+    "genai": "^0.0.18",
+    "node": "^25.7.0",
+    "uuid": "^13.0.0",
+    "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.12",
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.7.3"
+  }
+}
