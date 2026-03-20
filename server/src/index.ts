@@ -69,10 +69,20 @@ wss.on("connection", (ws) => {
                     timeStamp: Date.now()
                 }));
             } else {
+                // Parse quota/rate limit errors cleanly
+                let userMessage = "Something went wrong. Please try again.";
+                try {
+                    const parsed = JSON.parse(error.message);
+                    const code = parsed?.error?.code;
+                    if (code === 429) {
+                        userMessage = "API quota exceeded. Please wait a moment and try again, or update your Gemini API key.";
+                    }
+                } catch { /* not a JSON error, use default */ }
+
                 console.error("AI Response Error:", error.message);
                 ws.send(JSON.stringify({
                     sender: "ai",
-                    text: `[Error: ${error.message}]`,
+                    text: userMessage,
                     timeStamp: Date.now(),
                 }));
             }

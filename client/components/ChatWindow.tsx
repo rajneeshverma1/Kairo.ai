@@ -5,11 +5,10 @@ import { MessageInput } from "@/components/MessageInput"
 import { MessageBubble } from "@/components/MessageBubble"
 import { Plus, Menu, X, ArrowUpRight } from "lucide-react"
 import { ToggleTheme } from "@/components/ui/toggle-theme";
-import { ThemeSwitcher } from "@/components/ui/theme-switcher-1";
 
 // A single Chat Tab Component that maintains its own websocket connection and state
 function ChatTabContent({ isActive }: { isActive: boolean }) {
-    const { messages, currentAI, sendMessage, connected, finalizeAIMessage } =
+    const { messages, currentAI, sendMessage, connected } =
         useWebSocket(process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8081")
 
     const scrollRef = useRef<HTMLDivElement>(null)
